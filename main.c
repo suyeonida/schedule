@@ -21,8 +21,8 @@ int main(int argc, char *argv[]) {
 	int month;
 	int day;
 	int type;
-	void *list;
-	void *ndPtr;   //노드 포인터  
+	//void *list;
+	//void *ndPtr;   //노드 포인터  
 	void *schedInfo;
 	int option;    //몇번 누르는지 확인  
 	int cnt,i,count;
