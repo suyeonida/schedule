@@ -4,7 +4,11 @@
 #include "schedule.h"
 #include "linkedList.h"
 #define STRING_SIZE 256
+#define N 100
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+schedInfo_t* list = NULL;    
+schedInfo_t* newNode = NULL;
 
 int main(int argc, char *argv[]) {
 	
@@ -21,12 +25,10 @@ int main(int argc, char *argv[]) {
 	void *ndPtr;   //노드 포인터  
 	void *schedInfo;
 	int option;    //몇번 누르는지 확인  
-	int count,i;
+	int cnt,i,count;
 	int j=0;
 	char ch;
 	struct schedInfo* tmp = NULL;     // tmp = 임시 구조체 포인터변수
-	schedInfo_t* list = NULL;
-	schedInfo_t* newNode = NULL;
 	
 	
 	struct genSchedInfo{
@@ -91,7 +93,7 @@ int main(int argc, char *argv[]) {
 					if(ch!=EOF) {
 						tmp->next = NULL;
 						newNode = tmp;
-						list_addTail(schedInfo, list);   //add a node at the end of the list 생성된 노드를 리스트에 추가
+						list_addTail(schedInfo, list);   //add a node at the end of the list 
 					}
 					else if(ch==EOF) break;	
 			
@@ -120,44 +122,20 @@ int main(int argc, char *argv[]) {
 			case 1: //print all the schedules   
 				printf("printing all the schedules in the scheduler.....\n\n\n");
 				
-				ndPtr = list;
-				while (list_isEndNode(ndPtr) == 0)
-				{   
-					printf("%d",cnt);  //print count
-					//file code here -- print count and each scheduling info element
-					sched_print(void* obj);
-					cnt++;
-					}
-					
-					ndPtr = list_getNextNd(ndPtr); //get the next node from the list  e
-					schedInfo = list_getNdObj(ndPtr); //get the object (scheduling info)schedInfo는 포인터다.returns the object of the node
-					
-					//fill code this part - end
-					
-				}
-				
+				total_schedule(void);
+			
 				break;
 				
 			case 2:  //scanf로 2를 받는 다면  
 				printf("which month ? : ");
-				scanf("%i", &month);        //month에 숫자를 받음  
+				scanf("%i", &month);
 				
-				ndPtr = list;
-				while (list_isEndNode(ndPtr) == 0)
-				{
 				//file code here -- print scheduling info elements matching to the month
-				int num=0;
-				for()
-				 
-				//입력 파일이 유효한 경우 
-				while(다 찾을 때까지 )
+				month_search();
+			
+			
+				while(list_isEndNode(ndPtr) == 0)
 				
-					printf("---------------------------------\n");
-					printf("%d. Schedule Name : %s (%s)\n", cnt+1, m[cnt].place, m[cnt].typeName);
-					printf("When : &d. %d",m[cnt].month, m[cnt].day);
-					prinrf("Where : %s", m[cnt].place);
-					
-					
 					ndPtr = list_getNextNd(ndPtr); //get the next node from the list
 					schedInfo = list_getNdObj(ndPtr); //get the object (scheduling info)
 					
@@ -167,13 +145,13 @@ int main(int argc, char *argv[]) {
 				break;
 				
 			case 3: // 3을 return 한다면 
-				printf("which place ? : ");
-				scanf("%s", &place);
 				
-				ndPtr = list;
+				place_search();
+				
 				while (list_isEndNode(ndPtr) == 0)
 				{
 					//file code here -- print scheduling info elements matching to the place
+					
 					ndPtr = list_getNextNd(ndPtr); //get the next node from the list
 					schedInfo = list_getNdObj(ndPtr); //get the object (scheduling info)
 					
@@ -188,9 +166,10 @@ int main(int argc, char *argv[]) {
 				printf("your choice : ");
 				scanf("%s", &typeName);
 				
+				
 				if (/* fill code here -- convert the type and check if the type is valid */)
 				{
-					ndPtr = list;
+					tmp = list;
 					while (list_isEndNode(ndPtr) == 0)
 					{
 						//file code here -- print scheduling info elements matching to the place
@@ -206,12 +185,12 @@ int main(int argc, char *argv[]) {
 				}
 				break;
 				
-			case 5:  //5를 return 한다면 프로그램 exit 
+			case 5:  //5를 입력한다면 프로그램 exit 
 				printf("Bye!\n\n");
 				exit_flag = 1;
 				break;
 				
-			default:  //아무것도 아니라면  
+			default:    
 				printf("wrong command! input again\n");
 				break;
 		}

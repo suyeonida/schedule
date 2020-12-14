@@ -382,4 +382,53 @@ void* list_getNdObj(void* nd)
 	return (void*)ndPtr->obj;
 }
 
+//print function in case 2
+
+void month_search(void) {   //month로 찾기  
+	
+		int month_num;      
+		int i = 0, j = 0, n = 0 ,cnt = 0;
+		schedInfo_t* month[N];     // 리스트 변수의 노드 주소값을 저장할 포인터배열
+		schedInfo_t* tmp;         //임시 구조체 포인터변수
+		int ct[N], ln[N];         //??????
+
+		tmp = list;  
+		getchar();
+		printf("which month ? : ");
+		scanf("%lf", &month_num);        //month에 숫자를 받음  
+		getchar();
+
+		while(tmp != NULL) { //임시저장소 포인터가 널이 아니면  
+				n = 0; //비교 카운트 변수 초기화 
+				if(month_num == tmp->month) { // month숫자와 포인터가 가리키는 month가 같으면  
+						cnt++; 
+						if(i=0) 
+							month[i++] = tmp;
+						else { 
+							for(j=0; j<i; j++)
+									if(month[j]->month == tmp->month) 
+											n++;
+						if(n==0) 
+							month[i++] = tmp;
+						}
+				}
+				tmp = tmp->next;   // 다음 노드로 이동
+		
+		tmp = list; // 초기화
+
+		if(cnt!=0){  //검색했을 때 정보가 있다면 출력  
+			j=0;
+			  
+			printf("--------------------------------------\n");
+			printf("%d.Schedule Name : %s (%s)\n",j, month[j]->name, month[j]->type);
+			printf("When : %s\n", month[j]->day);
+			printf("Where : %s\n", month[j]->place);
+			j++;
+		}
+		
+		if(cnt == 0)   //count가 0이면  
+			printf("\n");
+		}
+}
+
 
