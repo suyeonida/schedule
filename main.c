@@ -95,7 +95,8 @@ int main(int argc, char *argv[]) {
 						newNode = tmp;
 						list_addTail(schedInfo, list);   //add a node at the end of the list 
 					}
-					else if(ch==EOF) break;	
+					else if(ch==EOF) 
+						break;	
 			
 	//fill code here ---- close the file pointer
 	fclose(fp);

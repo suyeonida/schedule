@@ -47,7 +47,7 @@ typedef struct schedInfo
 	int month;				//when : month
 	int day;				//when : day
 	char place[100];		//where
-	struct schedInfo* next;   //다음 노드를 가리킴 
+	schedInfo* next;   //다음 노드를 가리킴 
 } schedInfo_t;
 
 
