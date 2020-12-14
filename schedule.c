@@ -190,6 +190,51 @@ void place_search(void) {             // case 3 : place로 찾기
 	
 //print function in case 4
 
+void type_search(void) {             // case 3 : type으로 찾기  
+		
+		int type_num;      
+		int i = 0, j = 0, n = 0 ,cnt = 0;
+		schedInfo_t* type[N];     // 리스트 변수의 노드 주소값을 저장할 포인터배열
+		schedInfo_t* tmp;         //임시 구조체 포인터변수
+	    
+		tmp = list;  
+		
+		//printf("which type ? : ");
+		//scanf("%lf", &type_num);        //month에 숫자를 받음  
+		type_num = typeName; 
+
+		while(tmp != NULL) { //임시저장소 포인터가 널이 아니면  
+				n = 0; //비교 카운트 변수 초기화 
+				if(type_num == tmp->type) { // month숫자와 포인터가 가리키는 month가 같으면  
+						cnt++; 
+						if(i=0) 
+							type[i++] = tmp;
+						else { 
+							for(j=0; j<i; j++)
+									if(type[j]->type == tmp->type) 
+											n++;
+						if(n==0) 
+							type[i++] = tmp;
+						}
+				}
+				tmp = tmp->next;   // 다음 노드로 이동
+		
+		tmp = list; // 초기화
+
+		if(cnt!=0){  //검색했을 때 정보가 있다면 출력  
+			j=0;
+			  
+			printf("--------------------------------------\n");
+			printf("%d.Schedule Name : %s (%s)\n",j, type[j]->name, type[j]->type);
+			printf("When : %d. %d\n", type[j]->month, type[j]->day);
+			printf("Where : %s\n", type[j]->place);
+			j++;
+		}
+		
+		if(cnt == 0)   //count가 0이면  
+			printf("\n");
+		}
+}
  
 
 //generating a structure of scheduling information   

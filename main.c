@@ -171,14 +171,17 @@ int main(int argc, char *argv[]) {
 				if (/* fill code here -- convert the type and check if the type is valid */)
 				{
 					tmp = list;
-					while (list_isEndNode(ndPtr) == 0)
+					
+					type_search(void)
+					
+					/*while (list_isEndNode(ndPtr) == 0)
 					{
 						//file code here -- print scheduling info elements matching to the place
 						ndPtr = list_getNextNd(ndPtr); //get the next node from the list
 						schedInfo = list_getNdObj(ndPtr); //get the object (scheduling info)
 						
 						//fill code this part - end
-					}
+					}*/
 				}
 				else
 				{
